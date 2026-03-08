@@ -266,11 +266,17 @@
       flex-wrap: wrap;
       gap: 8px;
     }
+    .project-img img {
+      max-width: auto;
+      max-height: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+    }
     .btn-outline-tech {
       border: 1.8px solid var(--btn-outline-border);
       color: var(--btn-outline-text);
       border-radius: 30px;
-      padding: 6px 18px;
+      padding: 6px 10px;
       font-weight: 600;
       background: rgba(255,255,255,0.08);
       display: inline-flex;
@@ -337,6 +343,7 @@
       section { padding: 60px 0; }
       .tech-bg i { opacity: 0.35; font-size: 2.4rem; }
       .project-actions { gap: 12px; }
+      .btn-cta { padding: 12px 28px; font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -368,8 +375,8 @@
         <a class="navbar-brand fw-bold" href="#">
           <i class="bi bi-terminal-fill me-2" style="color: var(--tech-icon-color);"></i>Mutwiri alex
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="color: var(--text-primary);">
+          <span class="navbar-toggler-icon" ></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
@@ -397,9 +404,9 @@
             <p class="mb-5 w-75 mx-auto" style="font-size: 1.25rem; color: var(--text-secondary);">
               I build resilient web apps with modern tooling. From well-thought-out UIs to scalable backend solutions — I turn ideas into reality.
             </p>
-            <a href="#projects" class="btn btn-cta btn-lg me-3">
+            <a href="#projects" class="btn btn-cta btn-lg mx-2">
               <i class="bi bi-code-slash me-2"></i>View projects
-            </a>
+            </a>   
             <a href="#footer" class="btn btn-outline-secondary btn-lg rounded-pill px-4" style="border-width: 2px; color: var(--text-primary); border-color: var(--tech-icon-color);">
               <i class="bi bi-chat-dots-fill me-2"></i>Contact
             </a>
@@ -474,15 +481,14 @@
           <div class="col-md-6 col-lg-4 d-flex">
             <div class="project-card w-100">
               <div class="project-img">
-                <i class="bi bi-robot fs-1 me-2"></i><i class="bi bi-card-checklist fs-1"></i>
-                <span class="ms-2 text-muted small">taskflow.ai</span>
+                <img src="./images/rumsika.jpg" alt="" srcset="">
               </div>
-              <h4>AI Task Orchestrator</h4>
-              <p>Smart to‑do with NLP & realtime sync. GPT‑powered suggestions. Seamless team collaboration.</p>
+              <h4>Rumsika</h4>
+              <p>A web application for users to search and list houses for sale or rent.</p>
               <div class="project-actions">
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
-                <span class="badge-tech"><i class="bi bi-bookmark-fill me-1"></i>React</span>
+                <a href="https://www.rumsika.twitech.co.ke/" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <a href="https://github.com/MUTWIRI0922/Rumsika" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech btn-outline-tech"><i class="fab fa-laravel me-1"></i>Laravel</span>
               </div>
             </div>
           </div>
@@ -490,15 +496,13 @@
           <div class="col-md-6 col-lg-4 d-flex">
             <div class="project-card w-100">
               <div class="project-img">
-                <i class="bi bi-code-slash fs-1 me-2"></i><i class="bi bi-laptop fs-1"></i>
-                <span class="ms-2 text-muted small">v3 portfolio</span>
+                <img src="./images/" alt="" srcset="">
               </div>
-              <h4>Techfolio v3</h4>
-              <p>Modular, responsive with Bootstrap icons, animated bg. Performance optimized and accessible.</p>
+              <h4>Twitech Website</h4>
+              <p>A comprehensive fullstack web application built with modern technologies, featuring a responsive design and seamless user experience.</p>
               <div class="project-actions">
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
-                <span class="badge-tech"><i class="bi bi-bootstrap-fill me-1"></i>HTML/CSS</span>
+                <a href="https://twitech.co.ke/" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <span class="badge-tech"><i class="fab fa-laravel me-1"></i>Laravel</span>
               </div>
             </div>
           </div>
@@ -506,66 +510,23 @@
           <div class="col-md-6 col-lg-4 d-flex">
             <div class="project-card w-100">
               <div class="project-img">
-                <i class="bi bi-cloud-fill fs-1 me-2"></i><i class="bi bi-bar-chart-fill fs-1"></i>
-                <span class="ms-2 text-muted small">AWS metrics</span>
+                  <img src="./images/barakareal.jpg" alt="" srcset="">
               </div>
-              <h4>CloudDash</h4>
-              <p>Real‑time lambda monitoring + cost analyzer. CDK & React. Multi‑account support.</p>
+              <h4>Baraka real estate</h4>
+              <p>A static website for a real estate agency, showcasing properties and services.</p>
               <div class="project-actions">
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
-                <span class="badge-tech">AWS</span>
+                <a href="https://baraka-real-estates.vercel.app/" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <a href="https://github.com/MUTWIRI0922/Baraka-RealEstates" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech"><i class="fab fa-html5 me-1"></i>HTML/CSS</span>
               </div>
             </div>
           </div>
           <!-- Project 4 -->
-          <div class="col-md-6 col-lg-4 d-flex">
-            <div class="project-card w-100">
-              <div class="project-img">
-                <i class="bi bi-cart-check fs-1 me-2"></i><i class="bi bi-database fs-1"></i>
-                <span class="ms-2 text-muted small">mern store</span>
-              </div>
-              <h4>MERN Commerce</h4>
-              <p>Full‑stack store with JWT, Stripe, admin dashboard. Inventory & order management.</p>
-              <div class="project-actions">
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
-                <span class="badge-tech">MERN</span>
-              </div>
-            </div>
-          </div>
+
           <!-- Project 5 -->
-          <div class="col-md-6 col-lg-4 d-flex">
-            <div class="project-card w-100">
-              <div class="project-img">
-                <i class="bi bi-palette-fill fs-1 me-2"></i><i class="bi bi-grid-1x2-fill fs-1"></i>
-                <span class="ms-2 text-muted small">ui kit</span>
-              </div>
-              <h4>Aether UI</h4>
-              <p>Accessible component library, dark mode, Figma tokens. 20+ production ready components.</p>
-              <div class="project-actions">
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Storybook</a>
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
-                <span class="badge-tech">Figma</span>
-              </div>
-            </div>
-          </div>
+
           <!-- Project 6 -->
-          <div class="col-md-6 col-lg-4 d-flex">
-            <div class="project-card w-100">
-              <div class="project-img">
-                <i class="bi bi-terminal fs-1 me-2"></i><i class="bi bi-cpu fs-1"></i>
-                <span class="ms-2 text-muted small">cli tool</span>
-              </div>
-              <h4>Envi‑scan</h4>
-              <p>CLI for env validation & secret scanning (Node). Used by 20+ OSS repos.</p>
-              <div class="project-actions">
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>npm</a>
-                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
-                <span class="badge-tech">CLI</span>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -576,7 +537,7 @@
         <div class="row gy-4">
           <div class="col-md-5">
             <h4 class="text-white fw-bold"><i class="bi bi-person-bounding-box me-2"></i>Mutwiri Alex</h4>
-            <p class="text-white-50" style="max-width: 300px;">Building robust & human‑centric software. Open for collaborations and freelance opportunities.</p>
+            <p class="text-white-50" style="max-width: 300px;">Building robust & human‑centric web applications. Open for collaborations and freelance opportunities.</p>
             <p class="mb-1"><i class="bi bi-envelope-paper-fill me-2"></i> alexmutwiri@twitech.co.ke</p>
             <p><i class="bi bi-geo-alt-fill me-2"></i>Kenya · Remote </p>
           </div>
