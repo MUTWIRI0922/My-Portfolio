@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Mutwiri Alex - Web Developer, Full‑Stack, Backend developer, Graphics Designer</title>
+  <meta name="keywords" content="Mutwiri Alex, Web Developer, Full‑Stack Developer, Backend Developer, Graphics Designer, Portfolio, Projects, Skills">
+  <meta name="description" content="Mutwiri Alex is a skilled web developer specializing in full‑stack and backend development, with a passion for creating robust web applications. Explore his portfolio showcasing projects built with Laravel, PHP, and Bootstrap. Contact him for collaborations and freelance opportunities.">
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -90,7 +92,7 @@
     .tech-bg i {
       position: absolute;
       font-size: 2.8rem;
-      color: var(--tech-icon-color);
+      color: var(--text-primary);
       transform: rotate(0deg);
       animation: float 24s infinite ease-in-out;
       text-shadow: 0 4px 12px rgba(0,60,120,0.2);
@@ -147,6 +149,13 @@
       font-weight: 600;
       color: var(--text-primary) !important;
       transition: color 0.2s;
+    }
+    /* make toggler icon follow the current text color */
+    .navbar-toggler {
+      color: var(--text-primary) !important;
+    }
+    .navbar-toggler-icon {
+      display: none; /* we'll use a bootstrap icon instead */
     }
     
     section {
@@ -266,11 +275,12 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-    .project-img img {
-      max-width: auto;
-      max-height: 100%;
-      border-radius: 18px;
+    .project-img img{
+      /* make the image fill the card area and crop if necessary */
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      border-radius: 18px;
     }
     .btn-outline-tech {
       border: 1.8px solid var(--btn-outline-border);
@@ -343,7 +353,7 @@
       section { padding: 60px 0; }
       .tech-bg i { opacity: 0.35; font-size: 2.4rem; }
       .project-actions { gap: 12px; }
-      .btn-cta { padding: 12px 28px; font-size: 0.95rem; }
+      .btn-cta { padding: 12px 20px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -375,8 +385,8 @@
         <a class="navbar-brand fw-bold" href="#">
           <i class="bi bi-terminal-fill me-2" style="color: var(--tech-icon-color);"></i>Mutwiri alex
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="color: var(--text-primary);">
-          <span class="navbar-toggler-icon" ></span>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <i class="bi bi-list" aria-hidden="true"></i>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
@@ -536,7 +546,7 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-md-5">
-            <h4 class="text-white fw-bold"><i class="bi bi-person-bounding-box me-2"></i>Mutwiri Alex</h4>
+            <h4 class="text-white fw-bold">Mutwiri Alex</h4>
             <p class="text-white-50" style="max-width: 300px;">Building robust & human‑centric web applications. Open for collaborations and freelance opportunities.</p>
             <p class="mb-1"><i class="bi bi-envelope-paper-fill me-2"></i> alexmutwiri@twitech.co.ke</p>
             <p><i class="bi bi-geo-alt-fill me-2"></i>Kenya · Remote </p>
@@ -547,7 +557,7 @@
               <li><a href="#hero" class="text-white-50">Home</a></li>
               <li><a href="#skills" class="text-white-50">Skillset</a></li>
               <li><a href="#projects" class="text-white-50">Projects</a></li>
-              <li><a href="#" class="text-white-50">Resume (PDF)</a></li>
+              <li><a href="Alex Mutwiri  Tech CV.pdf" target="_blank" class="text-white-50">Resume (PDF)</a></li>
             </ul>
           </div>
           <div class="col-md-3 text-md-end">
