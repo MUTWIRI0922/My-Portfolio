@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Alex Rivera · code & design · theme toggle</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* ----- CSS variables for LIGHT theme (default) ----- */
+    :root {
+      --bg-gradient-start: rgba(255,255,255,0.78);
+      --bg-gradient-end: rgba(248,250,252,0.7);
+      --body-bg: #eef6ff;
+      --text-primary: #0b2b4a;
+      --text-secondary: #173e54;
+      --card-bg: rgba(255,255,255,0.75);
+      --card-border: rgba(60,130,180,0.25);
+      --navbar-bg: rgba(255,255,255,0.7);
+      --footer-bg: rgba(12,35,50,0.9);
+      --footer-text: #e3f0fa;
+      --tech-icon-color: #1e4f6e;
+      --btn-cta-gradient: linear-gradient(145deg, #173e54, #0e3348);
+      --btn-outline-border: #1e4f6e;
+      --btn-outline-text: #1e4f6e;
+      --badge-bg: rgba(30,79,110,0.12);
+      --badge-text: #0b2b4a;
+      --progress-bg: rgba(0,0,0,0.06);
+      --shadow-color: rgba(0,80,130,0.4);
+      --overlay-opacity: 0.78;
+    }
+
+    /* ----- DARK theme variables (toggle via .dark-theme on body) ----- */
+    body.dark-theme {
+      --bg-gradient-start: rgba(10,25,40,0.88);
+      --bg-gradient-end: rgba(8,20,35,0.92);
+      --body-bg: #0a1a24;
+      --text-primary: #e2f0fa;
+      --text-secondary: #c1d9f0;
+      --card-bg: rgba(20,45,65,0.8);
+      --card-border: rgba(100,180,240,0.25);
+      --navbar-bg: rgba(12,30,45,0.85);
+      --footer-bg: rgba(6,18,28,0.98);
+      --footer-text: #cde1f0;
+      --tech-icon-color: #7bb3d9;
+      --btn-cta-gradient: linear-gradient(145deg, #2a5f7a, #124a63);
+      --btn-outline-border: #7bb3d9;
+      --btn-outline-text: #cfe2ff;
+      --badge-bg: rgba(100,180,240,0.18);
+      --badge-text: #e2f0fa;
+      --progress-bg: rgba(255,255,255,0.1);
+      --shadow-color: rgba(0,160,255,0.3);
+      --overlay-opacity: 0.85;
+    }
+    
+    /* ----- GLOBAL STYLES with variable application ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--body-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.2s ease;
+    }
+    
+    /* NON‑UNIFORM TECH BACKGROUND — inherits theme color */
+    .tech-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .tech-bg i {
+      position: absolute;
+      font-size: 2.8rem;
+      color: var(--tech-icon-color);
+      transform: rotate(0deg);
+      animation: float 24s infinite ease-in-out;
+      text-shadow: 0 4px 12px rgba(0,60,120,0.2);
+      transition: color 0.3s ease;
+    }
+    /* icon positions (unchanged) */
+    .tech-bg i:nth-child(1) { top: 3%; left: 2%; font-size: 3.5rem; transform: rotate(8deg); }
+    .tech-bg i:nth-child(2) { bottom: 10%; left: 7%; font-size: 4rem; transform: rotate(-18deg); }
+    .tech-bg i:nth-child(3) { top: 18%; right: 6%; font-size: 3.2rem; transform: rotate(30deg); }
+    .tech-bg i:nth-child(4) { bottom: 30%; right: 15%; font-size: 3.8rem; transform: rotate(-12deg); }
+    .tech-bg i:nth-child(5) { top: 50%; left: 12%; font-size: 3rem; transform: rotate(45deg); }
+    .tech-bg i:nth-child(6) { top: 75%; left: 22%; font-size: 4.2rem; transform: rotate(-25deg); }
+    .tech-bg i:nth-child(7) { top: 8%; left: 55%; font-size: 3.3rem; transform: rotate(65deg); }
+    .tech-bg i:nth-child(8) { bottom: 40%; right: 28%; font-size: 3.6rem; transform: rotate(-8deg); }
+    .tech-bg i:nth-child(9) { top: 85%; right: 45%; font-size: 4rem; transform: rotate(70deg); }
+    .tech-bg i:nth-child(10) { bottom: 12%; left: 38%; font-size: 4.5rem; transform: rotate(-35deg); }
+    .tech-bg i:nth-child(11) { top: 45%; right: 70%; font-size: 2.8rem; transform: rotate(50deg); }
+    .tech-bg i:nth-child(12) { top: 62%; left: 80%; font-size: 3.9rem; transform: rotate(-42deg); }
+    .tech-bg i:nth-child(13) { bottom: 20%; right: 8%; font-size: 3.4rem; transform: rotate(15deg); }
+    .tech-bg i:nth-child(14) { top: 30%; left: 45%; font-size: 3.7rem; transform: rotate(-55deg); }
+    .tech-bg i:nth-child(15) { bottom: 55%; right: 55%; font-size: 4.1rem; transform: rotate(25deg); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+      50% { transform: translateY(-20px) rotate(var(--rot, 0deg)); }
+    }
+    
+    /* overlay adapts to theme */
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 40%, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      z-index: -1;
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* navbar / cards / footer use themed variables */
+    .navbar {
+      background: var(--navbar-bg) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(var(--card-border), 0.3);
+      transition: background 0.3s ease;
+    }
+    .navbar-brand, .nav-link {
+      font-weight: 600;
+      color: var(--text-primary) !important;
+      transition: color 0.2s;
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      color: var(--text-primary);
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--tech-icon-color), #7bb3d9);
+      border-radius: 4px;
+    }
+    
+    /* CTA button */
+    .btn-cta {
+      background: var(--btn-cta-gradient);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 40px;
+      box-shadow: 0 12px 20px -12px var(--shadow-color);
+      transition: all 0.2s, background 0.3s;
+    }
+    .btn-cta:hover {
+      background: #1e4f6e;
+      transform: translateY(-3px);
+    }
+    
+    /* SKILL CARDS */
+    .skill-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 28px 20px;
+      box-shadow: 0 12px 30px -12px rgba(0,0,0,0.08);
+      height: 100%;
+      transition: background 0.3s, border 0.2s;
+    }
+    .skill-icon {
+      font-size: 2.8rem;
+      color: var(--tech-icon-color);
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+    .skill-card h4, .skill-card p {
+      color: var(--text-primary);
+    }
+    .skill-card .text-secondary-emphasis {
+      color: var(--text-secondary) !important;
+    }
+    .progress {
+      height: 10px;
+      border-radius: 20px;
+      background-color: var(--progress-bg);
+      margin-top: 16px;
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, var(--tech-icon-color), #3f9ed6);
+    }
+    
+    /* PROJECT CARDS — buttons always aligned */
+    .project-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 24px;
+      transition: 0.2s, background 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .project-card .project-img {
+      background: rgba(var(--tech-icon-color), 0.15);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 170px;
+      margin-bottom: 20px;
+      border: 1px solid var(--card-border);
+      color: var(--tech-icon-color);
+      font-weight: 500;
+    }
+    .project-card h4 {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .project-card p {
+      flex-grow: 1;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+    }
+    /* button container — horizontal, bottom aligned */
+    .project-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: auto;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .btn-outline-tech {
+      border: 1.8px solid var(--btn-outline-border);
+      color: var(--btn-outline-text);
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s, border-color 0.3s, color 0.3s;
+    }
+    .btn-outline-tech:hover {
+      background: var(--tech-icon-color);
+      border-color: var(--tech-icon-color);
+      color: white;
+    }
+    .badge-tech {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--card-border);
+    }
+    
+    /* theme toggle button - special styling */
+    .theme-toggle {
+      background: var(--card-bg);
+      border: 1.5px solid var(--tech-icon-color);
+      color: var(--text-primary);
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover {
+      background: var(--tech-icon-color);
+      color: white;
+    }
+    
+    /* footer */
+    .footer {
+      background: var(--footer-bg);
+      backdrop-filter: blur(10px);
+      color: var(--footer-text);
+      padding: 48px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+    .footer a {
+      color: var(--footer-text);
+    }
+    .footer a:hover { color: white; }
+    .social-icon {
+      font-size: 1.8rem;
+      margin-left: 18px;
+      color: var(--footer-text);
+    }
+    .social-icon:hover { color: white; }
+    
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .tech-bg i { opacity: 0.35; font-size: 2.4rem; }
+      .project-actions { gap: 12px; }
+    }
+  </style>
+</head>
+<body class="light-theme"> <!-- default light theme, JS will toggle -->
+  <!-- 🖥️ TECH BACKGROUND (themed colors) -->
+  <div class="tech-bg">
+    <i class="bi bi-cpu"></i>
+    <i class="bi bi-motherboard"></i>
+    <i class="bi bi-robot"></i>
+    <i class="bi bi-diagram-3"></i>
+    <i class="bi bi-intersect"></i>
+    <i class="bi bi-hexagon"></i>
+    <i class="bi bi-braces"></i>
+    <i class="bi bi-file-code"></i>
+    <i class="bi bi-laptop"></i>
+    <i class="bi bi-graph-up"></i>
+    <i class="bi bi-pc-display"></i>
+    <i class="bi bi-shield-lock"></i>
+    <i class="bi bi-cloud-arrow-up"></i>
+    <i class="bi bi-code-square"></i>
+    <i class="bi bi-terminal-plus"></i>
+  </div>
+  <div class="bg-overlay"></div>
+
+  <div class="content-wrapper">
+    <!-- 🔗 NAVIGATION BAR with THEME TOGGLE BUTTON -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <i class="bi bi-terminal-fill me-2" style="color: var(--tech-icon-color);"></i>Alex Rivera
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+            <!-- THEME SWITCHER BUTTON -->
+            <li class="nav-item ms-lg-3">
+              <button id="themeToggle" class="btn theme-toggle">
+                <i class="bi bi-sun-fill me-1"></i> Light / Dark
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ⚡ 1. HERO -->
+    <section id="hero" class="pt-5 pb-0">
+      <div class="container">
+        <div class="row align-items-center min-vh-75 py-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-3 fw-bold mb-3" style="color: var(--text-primary);">
+              Build. Deploy. <span style="background: linear-gradient(145deg, var(--tech-icon-color), #7bb3d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Elevate.</span>
+            </h1>
+            <p class="lead mb-4 fs-3" style="color: var(--text-secondary) !important;">
+              full‑stack developer · react & cloud native
+            </p>
+            <p class="mb-5 w-75 mx-auto" style="font-size: 1.25rem; color: var(--text-secondary);">
+              I architect resilient web apps with modern tooling. From UI polish to serverless backends — I turn complexity into seamless experience.
+            </p>
+            <a href="#projects" class="btn btn-cta btn-lg me-3">
+              <i class="bi bi-grid-3x3-gap-fill me-2"></i>View projects
+            </a>
+            <a href="#footer" class="btn btn-outline-secondary btn-lg rounded-pill px-4" style="border-width: 2px; color: var(--text-primary); border-color: var(--tech-icon-color);">
+              <i class="bi bi-chat-dots-fill me-2"></i>Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🛠️ 2. SKILLS -->
+    <section id="skills" class="py-5">
+      <div class="container">
+        <h2 class="fw-bold">technical stack</h2>
+        <p class="mb-5 fs-5" style="color: var(--text-secondary);">core competencies & current proficiency</p>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="skill-card">
+              <i class="bi bi-filetype-jsx skill-icon"></i>
+              <h4 class="fw-bold">React & Next</h4>
+              <p class="text-secondary-emphasis small">component libraries, hooks, SSR</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">90%</span></div>
+              <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="skill-card">
+              <i class="bi bi-server skill-icon"></i>
+              <h4 class="fw-bold">Backend (Node, Python)</h4>
+              <p class="text-secondary-emphasis small">Express, FastAPI, Postgres</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">85%</span></div>
+              <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="skill-card">
+              <i class="bi bi-cloud-arrow-up-fill skill-icon"></i>
+              <h4 class="fw-bold">AWS / Serverless</h4>
+              <p class="text-secondary-emphasis small">Lambda, DynamoDB, Amplify</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">80%</span></div>
+              <div class="progress"><div class="progress-bar" style="width: 80%;"></div></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="skill-card">
+              <i class="bi bi-tools skill-icon"></i>
+              <h4 class="fw-bold">DevOps (Docker, CI)</h4>
+              <p class="text-secondary-emphasis small">GitHub Actions, container</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">75%</span></div>
+              <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 💻 3. PROJECTS SHOWCASE -->
+    <section id="projects" class="py-5">
+      <div class="container">
+        <h2 class="fw-bold">featured projects</h2>
+        <p class="mb-5 fs-5" style="color: var(--text-secondary);">real‑world apps – from idea to deployment</p>
+        
+        <div class="row g-4">
+          <!-- Project 1 -->
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="project-card w-100">
+              <div class="project-img">
+                <i class="bi bi-robot fs-1 me-2"></i><i class="bi bi-card-checklist fs-1"></i>
+                <span class="ms-2 text-muted small">taskflow.ai</span>
+              </div>
+              <h4>AI Task Orchestrator</h4>
+              <p>Smart to‑do with NLP & realtime sync. GPT‑powered suggestions. Seamless team collaboration.</p>
+              <div class="project-actions">
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech"><i class="bi bi-bookmark-fill me-1"></i>React</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="project-card w-100">
+              <div class="project-img">
+                <i class="bi bi-code-slash fs-1 me-2"></i><i class="bi bi-laptop fs-1"></i>
+                <span class="ms-2 text-muted small">v3 portfolio</span>
+              </div>
+              <h4>Techfolio v3</h4>
+              <p>Modular, responsive with Bootstrap icons, animated bg. Performance optimized and accessible.</p>
+              <div class="project-actions">
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech"><i class="bi bi-bootstrap-fill me-1"></i>HTML/CSS</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="project-card w-100">
+              <div class="project-img">
+                <i class="bi bi-cloud-fill fs-1 me-2"></i><i class="bi bi-bar-chart-fill fs-1"></i>
+                <span class="ms-2 text-muted small">AWS metrics</span>
+              </div>
+              <h4>CloudDash</h4>
+              <p>Real‑time lambda monitoring + cost analyzer. CDK & React. Multi‑account support.</p>
+              <div class="project-actions">
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech">AWS</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="project-card w-100">
+              <div class="project-img">
+                <i class="bi bi-cart-check fs-1 me-2"></i><i class="bi bi-database fs-1"></i>
+                <span class="ms-2 text-muted small">mern store</span>
+              </div>
+              <h4>MERN Commerce</h4>
+              <p>Full‑stack store with JWT, Stripe, admin dashboard. Inventory & order management.</p>
+              <div class="project-actions">
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech">MERN</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="project-card w-100">
+              <div class="project-img">
+                <i class="bi bi-palette-fill fs-1 me-2"></i><i class="bi bi-grid-1x2-fill fs-1"></i>
+                <span class="ms-2 text-muted small">ui kit</span>
+              </div>
+              <h4>Aether UI</h4>
+              <p>Accessible component library, dark mode, Figma tokens. 20+ production ready components.</p>
+              <div class="project-actions">
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Storybook</a>
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech">Figma</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project 6 -->
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="project-card w-100">
+              <div class="project-img">
+                <i class="bi bi-terminal fs-1 me-2"></i><i class="bi bi-cpu fs-1"></i>
+                <span class="ms-2 text-muted small">cli tool</span>
+              </div>
+              <h4>Envi‑scan</h4>
+              <p>CLI for env validation & secret scanning (Node). Used by 20+ OSS repos.</p>
+              <div class="project-actions">
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>npm</a>
+                <a href="#" class="btn btn-outline-tech btn-sm"><i class="bi bi-github me-1"></i>Source</a>
+                <span class="badge-tech">CLI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 📬 FOOTER / CONTACT -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-md-5">
+            <h4 class="text-white fw-bold"><i class="bi bi-person-bounding-box me-2"></i>Alex Rivera</h4>
+            <p class="text-white-50" style="max-width: 300px;">Building robust & human‑centric software. Open for collaborations and freelance opportunities.</p>
+            <p class="mb-1"><i class="bi bi-envelope-paper-fill me-2"></i> alex.r@devportfolio.tech</p>
+            <p><i class="bi bi-geo-alt-fill me-2"></i> San Francisco / remote</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-white">quick links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#hero" class="text-white-50">Home</a></li>
+              <li><a href="#skills" class="text-white-50">Skillset</a></li>
+              <li><a href="#projects" class="text-white-50">Projects</a></li>
+              <li><a href="#" class="text-white-50">Resume (PDF)</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-md-end">
+            <h5 class="text-white">digital presence</h5>
+            <div class="mt-3">
+              <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-stack-overflow"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            </div>
+            <p class="text-white-50 small mt-4">© 2025 Alex Rivera<br>crafted with <i class="bi bi-cup-hot-fill"></i> & Bootstrap</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function() {
+      // smooth anchor scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || href === "") return;
+          const target = document.querySelector(href);
+          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        });
+      });
+
+      // 🌗 THEME TOGGLE - DARK/LIGHT MODE
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      
+      // check for saved theme preference
+      const savedTheme = localStorage.getItem('portfolioTheme');
+      if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+      } else {
+        body.classList.remove('dark-theme'); // ensure light
+      }
+
+      // toggle theme function
+      function toggleTheme() {
+        body.classList.toggle('dark-theme');
+        // save preference
+        if (body.classList.contains('dark-theme')) {
+          localStorage.setItem('portfolioTheme', 'dark');
+        } else {
+          localStorage.setItem('portfolioTheme', 'light');
+        }
+        // update toggle button icon (optional flair)
+        const icon = themeToggle.querySelector('i');
+        if (body.classList.contains('dark-theme')) {
+          icon.className = 'bi bi-moon-fill me-1';
+        } else {
+          icon.className = 'bi bi-sun-fill me-1';
+        }
+      }
+
+      // attach click event
+      themeToggle.addEventListener('click', toggleTheme);
+      
+      // set initial icon based on current theme
+      const icon = themeToggle.querySelector('i');
+      if (body.classList.contains('dark-theme')) {
+        icon.className = 'bi bi-moon-fill me-1';
+      } else {
+        icon.className = 'bi bi-sun-fill me-1';
+      }
+
+      // extra randomness for background icons
+      document.querySelectorAll('.tech-bg i').forEach(icon => {
+        let rot = (Math.random() * 50 - 25).toFixed(0);
+        icon.style.transform = `rotate(${rot}deg)`;
+        icon.style.animationDelay = (Math.random() * 5).toFixed(1) + 's';
+      });
+    })();
+  </script>
+</body>
+</html>
