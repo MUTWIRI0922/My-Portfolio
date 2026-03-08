@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Alex Rivera · code & design · theme toggle</title>
+  <title>Mutwiri Alex - Web Developer, Full‑Stack, Backend developer, Graphics Designer</title>
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <!-- Google Font: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
@@ -296,7 +299,10 @@
       background: var(--card-bg);
       border: 1.5px solid var(--tech-icon-color);
       color: var(--text-primary);
-      border-radius: 40px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50px;
       padding: 8px 20px;
       font-weight: 600;
       backdrop-filter: blur(8px);
@@ -360,7 +366,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container">
         <a class="navbar-brand fw-bold" href="#">
-          <i class="bi bi-terminal-fill me-2" style="color: var(--tech-icon-color);"></i>Alex Rivera
+          <i class="bi bi-terminal-fill me-2" style="color: var(--tech-icon-color);"></i>Mutwiri alex
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
@@ -371,12 +377,7 @@
             <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
-            <!-- THEME SWITCHER BUTTON -->
-            <li class="nav-item ms-lg-3">
-              <button id="themeToggle" class="btn theme-toggle">
-                <i class="bi bi-sun-fill me-1"></i> Light / Dark
-              </button>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -391,13 +392,13 @@
               Build. Deploy. <span style="background: linear-gradient(145deg, var(--tech-icon-color), #7bb3d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Elevate.</span>
             </h1>
             <p class="lead mb-4 fs-3" style="color: var(--text-secondary) !important;">
-              full‑stack developer · react & cloud native
+              Web Developer · Laravel · PHP · Bootstrap · Python
             </p>
             <p class="mb-5 w-75 mx-auto" style="font-size: 1.25rem; color: var(--text-secondary);">
-              I architect resilient web apps with modern tooling. From UI polish to serverless backends — I turn complexity into seamless experience.
+              I build resilient web apps with modern tooling. From well-thought-out UIs to scalable backend solutions — I turn ideas into reality.
             </p>
             <a href="#projects" class="btn btn-cta btn-lg me-3">
-              <i class="bi bi-grid-3x3-gap-fill me-2"></i>View projects
+              <i class="bi bi-code-slash me-2"></i>View projects
             </a>
             <a href="#footer" class="btn btn-outline-secondary btn-lg rounded-pill px-4" style="border-width: 2px; color: var(--text-primary); border-color: var(--tech-icon-color);">
               <i class="bi bi-chat-dots-fill me-2"></i>Contact
@@ -410,43 +411,52 @@
     <!-- 🛠️ 2. SKILLS -->
     <section id="skills" class="py-5">
       <div class="container">
-        <h2 class="fw-bold">technical stack</h2>
-        <p class="mb-5 fs-5" style="color: var(--text-secondary);">core competencies & current proficiency</p>
+        <h2 class="fw-bold">Technical stack</h2>
+        <p class="mb-5 fs-5" style="color: var(--text-secondary);">Core competencies & proficiency</p>
         <div class="row g-4">
           <div class="col-md-6 col-lg-3">
             <div class="skill-card">
-              <i class="bi bi-filetype-jsx skill-icon"></i>
-              <h4 class="fw-bold">React & Next</h4>
-              <p class="text-secondary-emphasis small">component libraries, hooks, SSR</p>
-              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">90%</span></div>
+              <i class="bi bi-filetype-php skill-icon"></i>
+              <h4 class="fw-bold">PHP</h4>
+              <p class="text-secondary-emphasis small">Server-side scripting</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">Proficiency</span><span class="small fw-semibold">90%</span></div>
               <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="skill-card">
               <i class="bi bi-server skill-icon"></i>
-              <h4 class="fw-bold">Backend (Node, Python)</h4>
-              <p class="text-secondary-emphasis small">Express, FastAPI, Postgres</p>
-              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">85%</span></div>
+              <h4 class="fw-bold">MySQL</h4>
+              <p class="text-secondary-emphasis small">Database Management</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">Proficiency</span><span class="small fw-semibold">85%</span></div>
               <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="skill-card">
-              <i class="bi bi-cloud-arrow-up-fill skill-icon"></i>
-              <h4 class="fw-bold">AWS / Serverless</h4>
-              <p class="text-secondary-emphasis small">Lambda, DynamoDB, Amplify</p>
-              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">80%</span></div>
+              <i class="fab fa-laravel skill-icon"></i>
+              <h4 class="fw-bold">Laravel</h4>
+              <p class="text-secondary-emphasis small">PHP Framework</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">Proficiency</span><span class="small fw-semibold">80%</span></div>
               <div class="progress"><div class="progress-bar" style="width: 80%;"></div></div>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="skill-card">
-              <i class="bi bi-tools skill-icon"></i>
-              <h4 class="fw-bold">DevOps (Docker, CI)</h4>
-              <p class="text-secondary-emphasis small">GitHub Actions, container</p>
-              <div class="d-flex justify-content-between"><span class="small fw-semibold">proficiency</span><span class="small fw-semibold">75%</span></div>
+              <i class="bi bi-github skill-icon"></i>
+              <h4 class="fw-bold">GitHub</h4>
+              <p class="text-secondary-emphasis small">Version Control</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">Proficiency</span><span class="small fw-semibold">75%</span></div>
               <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="skill-card">
+              <i class="bi bi-bootstrap-fill skill-icon"></i>
+              <h4 class="fw-bold">Bootstrap</h4>
+              <p class="text-secondary-emphasis small">CSS Framework</p>
+              <div class="d-flex justify-content-between"><span class="small fw-semibold">Proficiency</span><span class="small fw-semibold">95%</span></div>
+              <div class="progress"><div class="progress-bar" style="width: 95%;"></div></div>
             </div>
           </div>
         </div>
@@ -456,8 +466,8 @@
     <!-- 💻 3. PROJECTS SHOWCASE -->
     <section id="projects" class="py-5">
       <div class="container">
-        <h2 class="fw-bold">featured projects</h2>
-        <p class="mb-5 fs-5" style="color: var(--text-secondary);">real‑world apps – from idea to deployment</p>
+        <h2 class="fw-bold">Featured projects</h2>
+        <p class="mb-5 fs-5" style="color: var(--text-secondary);">Real‑world applications – from idea to deployment</p>
         
         <div class="row g-4">
           <!-- Project 1 -->
@@ -565,13 +575,13 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-md-5">
-            <h4 class="text-white fw-bold"><i class="bi bi-person-bounding-box me-2"></i>Alex Rivera</h4>
+            <h4 class="text-white fw-bold"><i class="bi bi-person-bounding-box me-2"></i>Mutwiri Alex</h4>
             <p class="text-white-50" style="max-width: 300px;">Building robust & human‑centric software. Open for collaborations and freelance opportunities.</p>
-            <p class="mb-1"><i class="bi bi-envelope-paper-fill me-2"></i> alex.r@devportfolio.tech</p>
-            <p><i class="bi bi-geo-alt-fill me-2"></i> San Francisco / remote</p>
+            <p class="mb-1"><i class="bi bi-envelope-paper-fill me-2"></i> alexmutwiri@twitech.co.ke</p>
+            <p><i class="bi bi-geo-alt-fill me-2"></i>Kenya · Remote </p>
           </div>
           <div class="col-md-4">
-            <h5 class="text-white">quick links</h5>
+            <h5 class="text-white">Quick links</h5>
             <ul class="list-unstyled">
               <li><a href="#hero" class="text-white-50">Home</a></li>
               <li><a href="#skills" class="text-white-50">Skillset</a></li>
@@ -580,22 +590,29 @@
             </ul>
           </div>
           <div class="col-md-3 text-md-end">
-            <h5 class="text-white">digital presence</h5>
+            <h5 class="text-white">Digital presence</h5>
             <div class="mt-3">
-              <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
-              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="social-icon"><i class="bi bi-stack-overflow"></i></a>
-              <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://github.com/MUTWIRI0922" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/in/alex-mutwiri/" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.facebook.com/alekie.luiz/" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
             </div>
-            <p class="text-white-50 small mt-4">© 2025 Alex Rivera<br>crafted with <i class="bi bi-cup-hot-fill"></i> & Bootstrap</p>
+            <p class="text-white-50 small mt-4">&copy; <span id="year"></span> Mutwiri Alex.<br>All rights reserved.</p>
           </div>
         </div>
       </div>
     </footer>
+      <button id="themeToggle" class="btn theme-toggle">
+          <i class="bi bi-sun-fill me-1"></i>
+      </button>
   </div>
+
+
+</body>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+
+    document.getElementById("year").innerText = new Date().getFullYear();
     (function() {
       // smooth anchor scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -656,5 +673,4 @@
       });
     })();
   </script>
-</body>
 </html>
